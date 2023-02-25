@@ -28,7 +28,23 @@ function fetchTodoList() {
 </script>
 
 <template>
-  <div class="section">
+    <BaseDisplay endpoint="todos" title="TodoViewer" v-model:itemList="todoList">
+        <template v-slot:metrics>
+            <p>
+                {{ completedItems.length }} completed |
+                {{ remainingItems.length }} remaining
+            </p>
+        </template>
+        <template v-slot:hero></template>
+        <template v-slot:items>
+            <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
+            <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
+            </li>        
+        </template>
+
+    </BaseDisplay>
+  <!--
+    <div class="section">
     <slot name="hero" />
     <h1 class="title">{{ title }}</h1>
     <button @click="fetchTodoList">Fetch Data</button>
@@ -43,11 +59,9 @@ function fetchTodoList() {
       </p>
     </slot>
     <ul class="list">
-      <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
-        <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
-      </li>
+
     </ul>
-  </div>
+  </div> -->
 </template>
 
 <style lang="scss"></style>
