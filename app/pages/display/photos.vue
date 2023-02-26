@@ -15,7 +15,11 @@ const filteredPhotoGallery = computed(() => {
 </script>
 
 <template>
+<div class="section">
+    <h1 class="title">Photo Gallery</h1>
+    <NuxtPage v-if="route.params.id" />
   <BaseDisplay
+    v-else
     title="Photo Gallery"
     itemType="photos"
     v-model:itemList="photoGallery"
@@ -25,10 +29,13 @@ const filteredPhotoGallery = computed(() => {
     </template>
     <template v-slot:items>
       <li v-for="photo in filteredPhotoGallery" :key="`photo-id-${photo.id}`">
-        <img :src="photo.thumbnailUrl" />
+        <NuxtLink :to="`/display/photos/${photo.id}`">
+            <img :src="photo.thumbnailUrl"/>        
+        </NuxtLink>
       </li>
     </template>
   </BaseDisplay>
+  </div>
 </template>
 
 <style lang="scss">
