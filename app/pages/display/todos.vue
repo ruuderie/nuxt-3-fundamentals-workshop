@@ -23,8 +23,19 @@ const remainingItems = computed(() => {
 </script>
 
 <template>
+    
+
+<Html>
+    <Head>
+        <Title>Todos</Title>
+        <Link rel="preconnect" href="https://fonts.googleapis.com" />
+<Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<Link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text&display=swap" />
+       </Head>
+</Html>
+
+  <NuxtLayout name="todo">
   <div class="section">
-    <h1 class="title">Todo Viewer</h1>
     <NuxtPage v-if="route.params.id" />
     <BaseDisplay v-else title="Todo Viewer" v-model:itemList="todoList">
       <template v-slot:hero> </template>
@@ -42,6 +53,7 @@ const remainingItems = computed(() => {
       </template>
     </BaseDisplay>
   </div>
+</NuxtLayout>
 </template>
 
 <style lang="scss"></style>
